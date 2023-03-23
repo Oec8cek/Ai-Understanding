@@ -1,0 +1,228 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Oec8cek/Ai-Understanding/blob/main/%ED%8C%A8%ED%84%B4%EC%9D%B8%EC%8B%9D_0323\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "metadata": {
+        "id": "6BoHJkPj06mc"
+      },
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import sklearn\n",
+        "sklearn.__version__"
+      ],
+      "metadata": {
+        "id": "CyEX3Qct1WCi",
+        "outputId": "b2fa184f-d973-4dcf-942c-503a9ce6e517",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        }
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'1.2.2'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 우리가 정리한 값에 giadient descent 이용."
+      ],
+      "metadata": {
+        "id": "EVO-PS0_1w0G"
+      },
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from sklearn.datasets import load_iris\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.naive_bayes import GaussianNB"
+      ],
+      "metadata": {
+        "id": "U9DrYL6C5jN_"
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 첫번째 import : Naive Bayes를 테스트하기 위해서 필요한 데이터셋인 iris를 불러오기.\n",
+        "# 두번째 import : 가져온 data를 train(학습)과 test(결과)을 위해서 분리시켜주는 메소드\n",
+        "# 세번째 import : Gaussian Naive Bayes 사용. 다양한 종류 중 연속된 숫자 형태에 성능이 좋음.\n"
+      ],
+      "metadata": {
+        "id": "nkgcN8EX-Siv"
+      },
+      "execution_count": 12,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Taking derivative on error function (Mean(Square) Errors)"
+      ],
+      "metadata": {
+        "id": "lHdk1R7HA2GA"
+      },
+      "execution_count": 21,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "X,y = load_iris(return_X_y=True)"
+      ],
+      "metadata": {
+        "id": "vcX8SDZq_R7U"
+      },
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.5, random_state=0)"
+      ],
+      "metadata": {
+        "id": "aEptIy1l_lAn"
+      },
+      "execution_count": 15,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "gnb = GaussianNB()"
+      ],
+      "metadata": {
+        "id": "R31K5g3nAkuj"
+      },
+      "execution_count": 16,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 데이터 학습 후, 예측결과 도출\n",
+        "y_pred = gnb.fit(X_train, y_train).predict(X_test)"
+      ],
+      "metadata": {
+        "id": "1dPZjrvnAolD"
+      },
+      "execution_count": 18,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Sigmoid function"
+      ],
+      "metadata": {
+        "id": "Z4oCxHmIAtzi"
+      },
+      "execution_count": 24,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Log likelihood function"
+      ],
+      "metadata": {
+        "id": "5wA1vA8vA0nH"
+      },
+      "execution_count": 25,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Taking derivative on Log likelihood function"
+      ],
+      "metadata": {
+        "id": "m7mCjqlhBvW0"
+      },
+      "execution_count": 27,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Gradient descent algorithm"
+      ],
+      "metadata": {
+        "id": "_xru6M2RA38m"
+      },
+      "execution_count": 28,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# titanic data를 feature scaler 이용하여 과제하기. (패턴인식 과제)"
+      ],
+      "metadata": {
+        "id": "v7buUcAnA5xZ"
+      },
+      "execution_count": 29,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "KefE_UCZCXRM"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Colaboratory에 오신 것을 환영합니다",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
